@@ -27,12 +27,12 @@ public class MainActivity extends AppCompatActivity {
         ci.getData().enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                Toast.makeText(MainActivity.this, "Success");
+                Toast.makeText(MainActivity.this, response.body(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Failure")
+                Toast.makeText(MainActivity.this, "Failure", Toast.LENGTH_SHORT).show();
 
             }
         });
