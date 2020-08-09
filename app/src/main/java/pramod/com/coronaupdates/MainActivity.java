@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
                     JSONArray array = new JSONArray(response.body());
                     for(int i =0; i < array.length(); i++){
                         JSONObject obj = array.getJSONObject(i);
+                        int confirmed = obj.getInt("Confirmed");
+                        String date = obj.getString("Date");
+                        tv.append(date.substring(0, 10)+"  "+confirmed+"\n");
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

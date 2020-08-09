@@ -18,7 +18,7 @@
             android:id="@+id/corona"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textAllCaps="true"/>
+            />
     </ScrollView>
 
 </LinearLayout>
