@@ -3,6 +3,7 @@ package pramod.com.coronaupdates;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -13,10 +14,13 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView tv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tv = findViewById(R.id.corona);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.covid19api.com/")
@@ -27,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         ci.getData().enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                Toast.makeText(MainActivity.this, response.body(), Toast.LENGTH_SHORT).show();
+                tv.setText(response.body());
             }
 
             @Override
