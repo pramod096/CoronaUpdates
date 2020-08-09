@@ -35,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
         ci.getData().enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
+                tv.append("      DATE       CONFIRMED\n");
                 try {
                     JSONArray array = new JSONArray(response.body());
-                    for(int i =0; i < array.length(); i++){
+                    for(int i = array.length()-1; i >= 0; i--){
                         JSONObject obj = array.getJSONObject(i);
                         int confirmed = obj.getInt("Confirmed");
                         String date = obj.getString("Date");
