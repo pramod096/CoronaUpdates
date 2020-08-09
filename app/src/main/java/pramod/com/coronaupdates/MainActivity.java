@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,7 +35,14 @@ public class MainActivity extends AppCompatActivity {
         ci.getData().enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                tv.setText(response.body());
+                try {
+                    JSONArray array = new JSONArray(response.body());
+                    for(int i =0; i < array.length(); i++){
+                        JSONObject obj = array.getJSONObject(i);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
